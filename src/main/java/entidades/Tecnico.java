@@ -8,6 +8,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +32,7 @@ import org.checkerframework.common.value.qual.BoolVal;
 @Setter
 @ToString(of = {"nombre", "cuil"})
 @Entity
-public @Data
-class Tecnico {
+public class Tecnico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -44,9 +44,8 @@ class Tecnico {
     private String cuil;
     @BoolVal(true)
     private boolean disponible;
-    @ElementCollection(targetClass = TipoEspecialidad.class)
-    @Enumerated(EnumType.STRING)
-    private List<TipoEspecialidad> especialidades;
+    @ManyToMany
+    private List<Especialidad> especialidades;
     @OneToMany
     private List<Incidente> incidentesAsignados;
 
@@ -57,7 +56,7 @@ class Tecnico {
         especialidades = new ArrayList<>();
     }
 
-    public void agregarEspecialidad(TipoEspecialidad especialidad) {
+    public void agregarEspecialidad(Especialidad especialidad) {
         if(especialidades==null){
             especialidades = new ArrayList<>();
         }
@@ -108,6 +107,17 @@ class Tecnico {
             }
         }
         return incidente.isResuelto();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Tecnico){
+            Tecnico t = (Tecnico)obj;
+            if(t.getId() == id){
+                return true;
+            }
+        }
+        return false;
     }
 
 

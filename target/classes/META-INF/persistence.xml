@@ -15,6 +15,7 @@ value="jdbc:mariadb://localhost:3306/pruebajpa"/>
 <property name="jakarta.persistence.jdbc.password" value=""/>
 <!-- las siguientes propiedades utilizarlas solo en ambientes de testing -->
 <property name="hibernate.hbm2ddl.auto" value="update"/>
+<property name="hibernate.hbm2ddl.import_files" value="import.sql"/>
 <property name="hibernate.show_sql" value="false"/>
 </properties>
 </persistence-unit>

@@ -33,8 +33,10 @@ public class TecnicoRepository {
     public List<Tecnico> listarTodos() {
         return tecnicoDAO.leerTodos();
     }
-    public Tecnico masResolucionesPorEspecialidad(int dias, TipoEspecialidad especialidad){
-        return tecnicoDAO.masResolucionesPorEspecialidad(dias, especialidad);
+    public List<Tecnico>conIncidentesResueltosCantDias(int dias){
+       List<Tecnico> tecnicos = tecnicoDAO.leerTodos();
+       //tecnicos.stream().filter(tecnico -> tecnico.getEspecialidades())
+        return tecnicoDAO.resolucionesPorDias(dias);
     }
 }
 

@@ -3,7 +3,6 @@ package enumerados;
 import java.util.List;
 import java.util.Arrays;
 
-
 public enum TipoEspecialidad {
     INSTALACION_Y_CONFIGURACION(Arrays.asList(TipoProblema.ERRORES_DURANTE_LA_INSTALACION, TipoProblema.CONFIGURACION_INCORRECTA, TipoProblema.CONFLICTOS_DE_SOFTWARE)),
     ACTUALIZACIONES_Y_PARCHES(Arrays.asList(TipoProblema.PROBLEMAS_DE_COMPATIBILIDAD, TipoProblema.FALLO_EN_LA_APLICACION_DE_PARCHES, TipoProblema.ERRORES_POST_ACTUALIZACION)),
@@ -18,7 +17,7 @@ public enum TipoEspecialidad {
     CONSULTORIA_TECNICA(Arrays.asList(TipoProblema.NECESIDAD_DE_ASESORAMIENTO_TECNICO, TipoProblema.OPTIMIZACION_DE_PROCESOS, TipoProblema.EVALUACION_DE_TECNOLOGIAS_EMERGENTES)),
     GESTION_DE_LICENCIAS(Arrays.asList(TipoProblema.PROBLEMAS_DE_CUMPLIMIENTO_LEGAL, TipoProblema.GESTION_DE_LICENCIAS_VENCIDAS, TipoProblema.AUDITORIA_DE_SOFTWARE));
 
-    private  List<TipoProblema> problemasAsociados;
+    private List<TipoProblema> problemasAsociados;
 
     private TipoEspecialidad(List<TipoProblema> tipoProblemas) {
         problemasAsociados = tipoProblemas;
@@ -27,4 +26,10 @@ public enum TipoEspecialidad {
     public List<TipoProblema> getProblemasAsociados() {
         return problemasAsociados;
     }
+
+    public boolean contains(TipoProblema problema) {
+        return problemasAsociados.contains(problema);
+    }
+
+
 }

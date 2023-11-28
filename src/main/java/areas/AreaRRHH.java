@@ -5,6 +5,7 @@ import entidades.Tecnico;
 import enumerados.TipoEspecialidad;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import persistencia.Repository.IncidenteRepository;
 import persistencia.Repository.TecnicoRepository;
 
@@ -24,7 +25,7 @@ public class AreaRRHH {
         incidenteRepo.buscarPorTecnico(tecnico).stream().forEach(incidente -> {
             String estado = incidente.isResuelto() ? "Resuelto" : "Sin resolver";
             System.out.println("\nid: " + incidente.getId() + "\nDescripcion: "
-                    + incidente.getDescripcion() + "\nEstado: " + estado);
+                    + incidente.getDescripcion() + "\nEstado: " + estado + "\nTécnico: " + tecnico.getNombre() + " - " + tecnico.getCuil());
         });
     }
 
@@ -45,9 +46,46 @@ public class AreaRRHH {
                 .orElse(null);
         return tecnicoConMasIncidentesResueltos;
     }
-    
-    public Tecnico TecnicoMasResolucionesPorEspecialidad(int dias, TipoEspecialidad especialidad){
-        return tecnicoRepo.masResolucionesPorEspecialidad(dias, especialidad);
+
+    public Tecnico tecnicoMasResolucionesPorEspecialidadEnNDias(int dias, TipoEspecialidad especialidad) {
+        Tecnico tecnicoConMasResoluciones = null;
+        int cantidadResoluciones = -1;
+        System.out.println(especialidad.getProblemasAsociados());
+        List<Incidente> incidentesResueltos = incidenteRepo.incidentesResueltosPorEspecialidadEnNDias(dias, especialidad)
+                .stream()
+                .filter(incidente -> incidente.getProblemas().stream().anyMatch(problema -> especialidad.contains(problema)))
+                .toList();
+        System.out.println(incidentesResueltos);
+
+//        List<Incidente> incidentesResueltos = incidenteRepo.incidentesResueltosPorEspecialidadEnNDias(dias,especialidad)
+//                .stream().filter(incidente -> especialidad.getProblemasAsociados().contains(incidente.getProblemas())).toList();
+//        List<Incidente> incidentesResueltos = incidenteRepo.incidentesResueltosPorEspecialidadEnNDias(dias, especialidad)
+//                .stream()
+//                .filter(incidente -> incidente.getProblemas().stream().anyMatch(especialidad.getProblemasAsociados()::contains))
+//                .toList();
+        for (Tecnico tecnico : tecnicoRepo.listarTodos()) {
+            int resolucionesDelTecnico = 0;
+            for (Incidente incidente : incidentesResueltos) {
+                if (incidente.getTecnico().equals(tecnico)) {
+                    System.out.println("se encontro el tecnico" + tecnico.getNombre());
+                    resolucionesDelTecnico++;
+                    if (resolucionesDelTecnico > cantidadResoluciones) {
+                        tecnicoConMasResoluciones = tecnico;
+                    }
+
+                }
+            }
+        }
+        return tecnicoConMasResoluciones;
     }
+//    public Tecnico tecnicoMasResolucionesPorEspecialidadEnNDias(int dias, TipoEspecialidad especialidad) {
+//    List<Incidente> incidentesResueltos = incidenteRepo.incidentesResueltosPorEspecialidadEnNDias(dias, especialidad);
+//
+//    Tecnico tecnicoConMasResoluciones = tecnicoRepo.listarTodos().stream()
+//            .max(Comparator.comparingInt(tecnico ->
+//                    (int) incidentesResueltos.stream().filter(incidente -> incidente.getTecnico().equals(tecnico)).count()))
+//            .orElse(null);
+//
+//    return tecnicoConMasResoluciones;
 
 }

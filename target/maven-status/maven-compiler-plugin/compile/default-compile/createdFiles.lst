@@ -11,9 +11,12 @@ main\Main.class
 entidades\Servicio.class
 persistencia\DAO\IncidenteDAO.class
 areas\AreaMesaDeAyuda.class
+entidades\Especialidad.class
 persistencia\DAO\ClienteDAO.class
 areas\AreaRRHH.class
+clasesBorradas\EspecialidadRepository.class
 enumerados\TipoServicio.class
+clasesBorradas\EspecialidadDAO.class
 entidades\Servicio$ServicioBuilder.class
 persistencia\DAO\ServicioDAO.class
 entidades\Incidente.class
@@ -25,3 +28,4 @@ clases\exceptions\NonexistentEntityException.class
 areas\AreaComercial.class
 entidades\Incidente$IncidenteBuilder.class
 enumerados\TipoEspecialidad.class
+entidades\Especialidad$EspecialidadBuilder.class

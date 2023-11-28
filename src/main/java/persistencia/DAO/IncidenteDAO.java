@@ -3,10 +3,12 @@ package persistencia.DAO;
 import persistencia.DAO.IDao;
 import entidades.Incidente;
 import entidades.Tecnico;
+import enumerados.TipoEspecialidad;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
+import java.time.LocalDate;
 import java.util.List;
 import org.hibernate.Hibernate;
 
@@ -105,5 +107,38 @@ public class IncidenteDAO implements IDao<Incidente, Integer> {
 
         List<Incidente> incidentesResueltos = query.getResultList();
         return incidentesResueltos;
+    }
+
+    public List<Incidente> incidentesResueltosEnNDias(int n) {
+        EntityManager em = emF.createEntityManager();
+        TypedQuery<Incidente> query = em.createQuery(
+                "SELECT i FROM Incidente i "
+                + "WHERE i.resuelto = true AND i.fechaResolucion >= :fechaLimite",
+                Incidente.class);
+
+        query.setParameter("fechaLimite", LocalDate.now().minusDays(n));
+
+        List<Incidente> incidentesFiltrados = query.getResultList();
+
+        // Aquí puedes trabajar con la lista de incidentes filtrados
+        return incidentesFiltrados;
+    }
+
+    public List<Incidente> incidentesResueltosPorEspecialidadEnNDias(int n, TipoEspecialidad tipoEspecialidad) {
+        EntityManager em = emF.createEntityManager();
+        TypedQuery<Incidente> query = em.createQuery(
+                "SELECT DISTINCT i FROM Incidente i "
+                + "JOIN i.problemas tp "
+                + "JOIN tp.especialidades e "
+                + "WHERE i.resuelto = true AND i.fechaResolucion >= :fechaLimite AND e.tipo = :tipoEspecialidad",
+                Incidente.class);
+
+        query.setParameter("fechaLimite", LocalDate.now().minusDays(n));
+        query.setParameter("tipoEspecialidad", tipoEspecialidad);
+
+        List<Incidente> incidentesFiltrados = query.getResultList();
+
+        // Aquí puedes trabajar con la lista de incidentes filtrados
+        return incidentesFiltrados;
     }
 }

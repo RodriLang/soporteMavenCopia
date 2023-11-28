@@ -2,6 +2,7 @@ package persistencia.Repository;
 
 import entidades.Incidente;
 import entidades.Tecnico;
+import enumerados.TipoEspecialidad;
 import java.util.List;
 import persistencia.DAO.IncidenteDAO;
 
@@ -39,5 +40,9 @@ public class IncidenteRepository {
 
     public List<Incidente> obtenerResueltosPorTecnico(Tecnico tecnico) {
         return incidenteDAO.obtenerResueltosPorTecnico(tecnico);
+    }
+    public List<Incidente> incidentesResueltosPorEspecialidadEnNDias(int n, TipoEspecialidad tipoEspecialidad) {
+        //return incidenteDAO.incidentesResueltosPorEspecialidadEnNDias(n, tipoEspecialidad);
+        return incidenteDAO.incidentesResueltosEnNDias(n);
     }
 }

@@ -1,34 +1,29 @@
 package persistencia.DAO;
 
-import persistencia.DAO.IDao;
-import entidades.Cliente;
-import entidades.Tecnico;
-import enumerados.TipoEspecialidad;
+import entidades.Especialidad;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import jakarta.persistence.TypedQuery;
-import java.time.LocalDate;
 import java.util.List;
-import org.hibernate.Hibernate;
+import persistencia.DAO.IDao;
 
-public class TecnicoDAO implements IDao<Tecnico, Integer> {
+public class EspecialidadDAO implements IDao< Especialidad, Integer> {
 
     private EntityManagerFactory emF;
 
-    public TecnicoDAO() {
+    public EspecialidadDAO() {
+
         this.emF = Persistence.createEntityManagerFactory("JPA_PU");
     }
 
     @Override
-    public void crear(Tecnico tecnico) {
+    public void crear(Especialidad especialidad) {
         EntityManager em = null;
         try {
             em = emF.createEntityManager();
             em.getTransaction().begin();
-            Hibernate.initialize(tecnico.getEspecialidades());
-            Hibernate.initialize(tecnico.getIncidentesAsignados());
-            em.persist(tecnico);
+            em.persist(especialidad);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -38,45 +33,29 @@ public class TecnicoDAO implements IDao<Tecnico, Integer> {
     }
 
     @Override
-    public Tecnico buscar(Integer idTecnico) {
+    public Especialidad buscar(Integer idEspecialidad) {
         EntityManager em = null;
-        Tecnico tecnico;
+        Especialidad especialidad;
         try {
             em = emF.createEntityManager();
             em.getTransaction().begin();
-            tecnico = em.find(Tecnico.class, idTecnico);
-            Hibernate.initialize(tecnico.getEspecialidades());
+            especialidad = em.find(Especialidad.class, idEspecialidad);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
                 em.close();
             }
         }
-        return tecnico;
+        return especialidad;
     }
 
     @Override
-    public void actualizar(Tecnico tecnico) {
+    public void actualizar(Especialidad especialidad) {
         EntityManager em = null;
         try {
             em = emF.createEntityManager();
             em.getTransaction().begin();
-            em.merge(tecnico);
-            em.getTransaction().commit();
-        } finally {
-            if (em != null) {
-                em.close();
-            }
-        }
-    }
-
-    @Override
-    public void borrar(Tecnico tecnico) {
-        EntityManager em = null;
-        try {
-            em = emF.createEntityManager();
-            em.getTransaction().begin();
-            em.remove(tecnico);
+            em.merge(especialidad);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -86,30 +65,25 @@ public class TecnicoDAO implements IDao<Tecnico, Integer> {
     }
 
     @Override
-    public List<Tecnico> leerTodos() {
+    public void borrar(Especialidad especialidad) {
+        EntityManager em = null;
+        try {
+            em = emF.createEntityManager();
+            em.getTransaction().begin();
+            em.remove(especialidad);
+            em.getTransaction().commit();
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
+
+    @Override
+    public List<Especialidad> leerTodos() {
         EntityManager em = emF.createEntityManager();
-        TypedQuery<Tecnico> query = em.createQuery("SELECT t FROM Tecnico t", Tecnico.class);
+        TypedQuery< Especialidad> query = em.createQuery("SELECT c FROM  Especialidad c", Especialidad.class);
         return query.getResultList();
     }
-
-
-
-    public List<Tecnico> resolucionesPorDias(int dias) {
-        EntityManager em = emF.createEntityManager();
-        TypedQuery<Tecnico> query = em.createQuery(
-                "SELECT t FROM Tecnico t JOIN t.incidentes i " +
-                        "WHERE i.resuelto = true AND i.fechaResolucion",
-                Tecnico.class);
-
-        query.setParameter("fechaLimite", LocalDate.now().minusDays(dias));
-       
-
-        List<Tecnico> tecnicosConMasResueltos = query.getResultList();
-
-        // Aquí puedes trabajar con la lista de técnicos encontrados
-        return tecnicosConMasResueltos;
-    }
-
-   
 
 }
