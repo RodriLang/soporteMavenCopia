@@ -1,10 +1,8 @@
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\persistencia\Repository\ClienteRepository.java
-C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\clasesBorradas\EspecialidadDAO.java
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\persistencia\DAO\IDao.java
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\areas\AreaMesaDeAyuda.java
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\persistencia\DAO\IncidenteDAO.java
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\clases\exceptions\IllegalOrphanException.java
-C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\clasesBorradas\EspecialidadRepository.java
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\main\Main.java
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\clases\exceptions\NonexistentEntityException.java
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\persistencia\Repository\TecnicoRepository.java
@@ -13,6 +11,7 @@ C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\j
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\persistencia\Repository\ServicioRepository.java
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\enumerados\TipoEspecialidad.java
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\entidades\Incidente.java
+C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\persistencia\DAO\EspecialidadDAO.java
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\entidades\Tecnico.java
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\persistencia\DAO\TecnicoDAO.java
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\areas\AreaRRHH.java
@@ -24,3 +23,4 @@ C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\j
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\persistencia\DAO\ClienteDAO.java
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\persistencia\DAO\ServicioDAO.java
 C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\enumerados\TipoProblema.java
+C:\Users\bersu\OneDrive\Documentos\NetBeansProjects\soporteMavenCopia\src\main\java\persistencia\Repository\EspecialidadRepository.java

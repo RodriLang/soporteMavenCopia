@@ -2,6 +2,7 @@ persistencia\Repository\ServicioRepository.class
 clases\exceptions\IllegalOrphanException.class
 entidades\Tecnico$TecnicoBuilder.class
 persistencia\Repository\IncidenteRepository.class
+persistencia\DAO\EspecialidadDAO.class
 persistencia\Repository\ClienteRepository.class
 clases\exceptions\PreexistingEntityException.class
 persistencia\DAO\TecnicoDAO.class
@@ -14,15 +15,14 @@ areas\AreaMesaDeAyuda.class
 entidades\Especialidad.class
 persistencia\DAO\ClienteDAO.class
 areas\AreaRRHH.class
-clasesBorradas\EspecialidadRepository.class
 enumerados\TipoServicio.class
-clasesBorradas\EspecialidadDAO.class
 entidades\Servicio$ServicioBuilder.class
 persistencia\DAO\ServicioDAO.class
 entidades\Incidente.class
 entidades\Tecnico.class
 persistencia\Repository\TecnicoRepository.class
 persistencia\DAO\IDao.class
+persistencia\Repository\EspecialidadRepository.class
 entidades\Cliente.class
 clases\exceptions\NonexistentEntityException.class
 areas\AreaComercial.class
