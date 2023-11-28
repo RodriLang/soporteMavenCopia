@@ -1,0 +1,85 @@
+############################## 
+##Java 
+############################## 
+.mtj.tmp/ 
+*.clase 
+*.frasco 
+*.guerra 
+*.oreja 
+*.nar 
+hs_err_pid* 
+repetición_pid* 
+
+############################## 
+## experto 
+############################## 
+objetivo/ 
+pom.xml.etiqueta 
+pom.xml.releaseCopia de seguridad 
+pom.xml.versionsCopia de seguridad 
+pom.xml.next 
+pom.xml.bak 
+release.properties 
+dependencia-reducida-pom.xml 
+buildNumber.properties 
+.mvn/timing.properties 
+.mvn/wrapper/maven-wrapper.jar 
+
+############################## 
+## gradle 
+############################## 
+papelera/ 
+construir/ 
+.gradle 
+.gradletasknamecache 
+configuración de la aplicación gradle 
+!gradle-wrapper.jar 
+
+############################## 
+## IntelliJ 
+############################## 
+afuera/ 
+.idea/ 
+.idea_modules/ 
+*.iml 
+*.ipr 
+*.iws 
+
+############################## 
+##Eclipse 
+############################## 
+.ajustes/ 
+papelera/ 
+tmp/ 
+.metadatos 
+.ruta de clase 
+.proyecto 
+*.tmp 
+*.detrás 
+*.swp 
+*~.punta 
+local.properties 
+.ruta de carga 
+.ruta de fábrica 
+
+############################## 
+## NetBean 
+############################## 
+nbproyecto/privado/ 
+construir/ 
+nbbuild/ 
+dist/ 
+nbdist/ 
+nbactions.xml 
+nb-configuración.xml 
+
+############################## 
+## Código de estudio visual 
+############################## 
+.vscode/ 
+.espacio de trabajo de código 
+
+############################## 
+##OSX 
+############################## 
+.DS_Tienda 
